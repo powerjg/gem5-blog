@@ -2,7 +2,6 @@
 layout: post
 title: Using 1GB pages in gem5
 authors: Swapnil Haria
-excerpt:
 tags: howto
 ---
 

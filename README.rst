@@ -38,3 +38,8 @@ Tags
 * best-practices: Used when describing a gem5 best practice. These usually are more about using gem5 and less about gem5 code.
 * howto: Describes how to do something specific.
 * code: A documentation-like post that describes how some gem5 code works.
+
+Excerpts
+--------
+
+Note: To get excerpts to work with restructuredtext, if there are rst statements in the first paragraph, you need to copy the first paragraph into the ``excerpt`` variable of the yaml header.
