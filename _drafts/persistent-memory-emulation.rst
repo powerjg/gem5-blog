@@ -1,8 +1,14 @@
-:Authors: Swapnil Haria
+---
+layout: post
+tags: best-practices
+authors: Swapnil Haria
+excerpt: >-
+    This post describes how to emulate new persistent memory technolgies in gem5 by Swapnil Haria.
+    Swapnil used this support in his ASPLOS 2017 publication: An Analysis of Persistent Memory Use with WHISPER. Sanketh Nalli, Swapnil Haria, Mark D. Hill, Michael M. Swift, Haris Volos, Kimberly Keeton.
+title: Persistent Memory emulation in gem5
+---
 
-=============================================
-Realistic Persistent Memory emulation in gem5
-=============================================
+:Authors: Swapnil Haria
 
 This post is from `Swapnil Haria`_, a 4th year grad student at University of Wisconsin working with `Mark Hill`_ and `Mike Swift`_.
 It describes how to emulate new persistent memory technolgies in gem5.
@@ -13,6 +19,8 @@ Swapnil used this support in his ASPLOS 2017 publication: *An Analysis of Persis
 .. _Mark Hill:  http://pages.cs.wisc.edu/~markhill/
 
 .. _Mike Swift: http://pages.cs.wisc.edu/~swift/
+
+
 
 Why is this necessary?
 ~~~~~~~~~~~~~~~~~~~~~~~~~

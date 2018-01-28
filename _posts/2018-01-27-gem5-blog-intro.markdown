@@ -2,6 +2,7 @@
 layout: post
 title:  "Introducing the gem5 blog"
 tags: announcements
+authors: Jason Lowe-Power
 ---
 
 There is a lot of knowledge that is lost in the [gem5][gem5] community.
