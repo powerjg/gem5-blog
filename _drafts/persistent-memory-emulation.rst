@@ -27,8 +27,10 @@ Why is this necessary?
 Persistent Memory (PM) is a catch-all term simply meaning any non-volatile memory (NVM)
 technology attached on the memory bus. Currently, there is no support for PM in gem5, which
 mean that researchers use existing DRAM models to emulate PM. Moreover, there is no good way of distinguishing PM accesses from DRAM accesses. However, this is not ideal for the following reasons:
+
 - PM latencies will be vastly different from DRAM latencies and also asymmetrical.
 - Different memory controller architectures will be needed for NVM.
+
 In this post, we develop a system configuration which will separate PM from DRAM making it easier to solve the issues above.
 
 How does this work?
@@ -42,8 +44,8 @@ Future hybrid-memory systems are expected to have a physical address space with 
 
 Note that these steps only works in Full-System mode.
 
-#. Build the Linux kernel with following NUMA config options enabled (CONFIG_NUMA=y, CONFIG_NUMA_EMU=y). I used linux version 4.14-rc6.
-#. We will configure 24GB physical memory split across three memory controllers (with a gap for devices between 3 and 4GB):
+1. Build the Linux kernel with following NUMA config options enabled (CONFIG_NUMA=y, CONFIG_NUMA_EMU=y). I used linux version 4.14-rc6.
+2. We will configure 24GB physical memory split across three memory controllers (with a gap for devices between 3 and 4GB):
 
 .. code-block:: python
 
@@ -54,7 +56,7 @@ Note that these steps only works in Full-System mode.
             AddrRange(Addr('17GB'), size = convert.toMemorySize('8GB'))]
 
 
-#. We configure the memory layout registers read by BIOS:
+3. We configure the memory layout registers read by BIOS:
 
 .. code-block:: python
 
@@ -68,18 +70,18 @@ Note that these steps only works in Full-System mode.
         system.e820_table.entries = entries
 
 
-#. A separate memory controller is created for each address range and thus PM-specific controllers can be used for the last address range.
-#. Add 'numa=fake=3' to linux boot command line. If using default config files, this can be found in gem5/configs/common/FSConfig.py. This sets up three NUMA nodes with memory of equal sizes.
-#. Configure the system to only simulate 2 CPUS (i.e., one less than the number of NUMA nodes).
-#. We use libnuma/numactl to ensure all volatile memory allocations are serviced from memory on nodes 0,1:
+4. A separate memory controller is created for each address range and thus PM-specific controllers can be used for the last address range.
+5. Add 'numa=fake=3' to linux boot command line. If using default config files, this can be found in gem5/configs/common/FSConfig.py. This sets up three NUMA nodes with memory of equal sizes.
+6. Configure the system to only simulate 2 CPUS (i.e., one less than the number of NUMA nodes).
+7. We use libnuma/numactl to ensure all volatile memory allocations are serviced from memory on nodes 0,1:
 
 .. code-block:: sh
 
      numactl --membind=0,1 ./queue_nvm
 
 
-#. All PM allocations can be done on the PM node via numa_alloc_onnode() API provided by libnuma.
-#. Alternatively, use a backing file to emulate PM. Allocate file on a tmpfs volume (shows up as /dev/shm typically). tmpfs is a temporary, memory-resident file system. We ensure that tmpfs is configured to only allocate memory on node 2:
+8. All PM allocations can be done on the PM node via numa_alloc_onnode() API provided by libnuma.
+9. Alternatively, use a backing file to emulate PM. Allocate file on a tmpfs volume (shows up as /dev/shm typically). tmpfs is a temporary, memory-resident file system. We ensure that tmpfs is configured to only allocate memory on node 2:
 
 .. code-block:: sh
 
