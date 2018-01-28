@@ -185,6 +185,7 @@ img {
   width: 100%;
   border-radius: 50%;
   display: block;
+  background-color: white;
 }
 
 .navbar-custom.top-nav-expanded .avatar-container  {

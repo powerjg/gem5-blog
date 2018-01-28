@@ -2,37 +2,29 @@
 
 # url is the full website URL
 # baseurl is the website's URL without the hostname
-
-# If you are building a simple GitHub user page (http://username.github.io) then use these settings:
-url: "http://username.github.io"
+url: "http://blog.gem5.org"
 baseurl: ""
 
-# If you are building a GitHub project page then use these settings:
-#url: "http://username.github.io/projectname"
-#baseurl: "/projectname"
-
-# Of course don't forget to change the username and projectname to YOUR username and project
-
 # Name of website
-title: My website
+title: gem5 Blog
 
 # Short description of your site
-description: A virtual proof that name is awesome!
+description: >-
+    The gem5 blog is a platform for unofficial documentation, recent gem5 news, and other information on gem5 edited by Jason Lowe-Power (jason@lowepower.com).
 
 # --- Navigation bar options --- #
 
 # List of links in the navigation bar
 navbar-links:
+  gem5 Resources:
+    - Wiki: "http://gem5.org/"
+    - Code: "https://gem5.googlesource.com/"
+    - Code review: "https://gem5-review.googlesource.com"
   About: "about"
-  Resources:
-    - Beautiful Jekyll: "http://deanattali.com/beautiful-jekyll/"
-    - Learn markdown: "http://www.markdowntutorial.com/"
-    - GitHub Pages: "https://pages.github.com/"
-  Author's home: "http://deanattali.com"
 
 # Image to show in the navigation bar - image must be a square (width = height)
 # Remove this parameter if you don't want an image in the navbar
-avatar: "/img/avatar-icon.png"
+avatar: "/img/avatar.png"
 
 # If you want to have an image logo in the top-left corner instead of the title text,
 # then specify the following parameter
@@ -136,7 +128,7 @@ title-separator: "-"
 # --- Don't need to touch anything below here (but you can if you want) --- #
 
 # Output options (more information on Jekyll's site)
-timezone: "America/Vancouver"
+timezone: America/Los_Angeles"
 markdown: kramdown
 highlighter: rouge
 permalink: /:year-:month-:day-:title/
