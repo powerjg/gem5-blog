@@ -157,6 +157,8 @@ exclude:
   - README.rst
   - README-theme.md
   - Vagrantfile
+  - venv
+  - requirements
 
 # prose.io config
 prose:
