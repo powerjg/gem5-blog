@@ -1,6 +1,6 @@
 ---
 layout: post
-tags: best-practices
+tags: howto
 authors: Swapnil Haria
 excerpt: >-
     This post describes how to emulate new persistent memory technolgies in gem5 by Swapnil Haria.

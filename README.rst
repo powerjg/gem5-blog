@@ -21,12 +21,14 @@ Note: You can install this for only the current user with ``--user-install``.
 
 Needed plugins
 ~~~~~~~~~~~~~~
-* jekyll-rst: https://github.com/xdissent/jekyll-rst. Note: this depends on python pygments.
+* jekyll-rst: https://github.com/xdissent/jekyll-rst. You will have to source venv/bin/activate to build.
 
 .. code-block:: sh
 
     git submodule add https://github.com/xdissent/jekyll-rst.git _plugins/jekyll-rst
-
+    virtualenv venv
+    source venv/bin/activate
+    pip install -r requirements.txt
 
 
 Tags
